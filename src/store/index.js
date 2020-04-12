@@ -46,7 +46,7 @@ const store = new Vuex.Store({
           {
             id: 6,
             content: "学习Vue",
-            date: new Date(),
+            date: new Date(Date.now() + 86400000),
             isDone: false,
             deleted: false
           }
@@ -67,11 +67,18 @@ const store = new Vuex.Store({
       }
     ],
     selectedTodo: null,
-    currentIndex: 1
+    currentIndex: 1,
+    isEditing: false
   },
   mutations: {
     changeSelected(state, payload) {
       state.selectedTodo = payload;
+    },
+    changeEdit(state, payload) {
+      state.isEditing = payload;
+    },
+    deleteTask(state, payload) {
+      payload.deleted = true;
     },
     prevTodo(state) {
       if (state.currentIndex > 0) {

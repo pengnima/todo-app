@@ -12,10 +12,6 @@
       />
       <!-- 简介 和 任务 -->
       <todo :todo="selectedTodo" />
-      <!-- 添加任务 -->
-      <div class="add_icon">
-        <floating-button></floating-button>
-      </div>
     </div>
   </transition>
 </template>
@@ -25,7 +21,6 @@
 import NavBar from "../NavBar";
 
 import Todo from "./Todo";
-import FloatingButton from "../FloatingButton";
 import { mapState, mapMutations } from "vuex";
 export default {
   props: {
@@ -39,43 +34,10 @@ export default {
   },
   components: {
     NavBar,
-    Todo,
-    FloatingButton
+    Todo
   },
   methods: {
     ...mapMutations(["changeSelected"]),
-    handleEnter(el) {
-      Object.assign(el.style, {
-        top: `10px`,
-        left: `10ppx`,
-        width: `100%`,
-        height: `100%`
-      });
-      setTimeout(() => {
-        Object.assign(el.style, {
-          top: 0,
-          left: 0,
-          width: `100%`,
-          height: `100%`
-        });
-      }, 0);
-    },
-    handleLeave(el) {
-      Object.assign(el.style, {
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: `100%`
-      });
-      setTimeout(() => {
-        Object.assign(el.style, {
-          top: `20px`,
-          left: `20px`,
-          width: `100%`,
-          height: `100%`
-        });
-      }, 0);
-    },
     cancleClick() {
       this.changeSelected(null);
       this.$parent.showChange();
@@ -101,11 +63,11 @@ export default {
 
 .fade-enter,
 .fade-leave-to {
-  top: 20px;
-  transform: translate3d(0, 200px, 0);
+  transform: translate3d(0, 300px, 0);
+  opacity: 0.8;
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 </style>

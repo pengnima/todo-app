@@ -1,11 +1,9 @@
 <template>
-  <div class="task" v-if="task!=null">
-    <!-- <i class="fa fa-check-square"></i>
-    <i class="fa fa-square"></i>-->
+  <div class="task" v-if="task!=null && !task.deleted">
     <input :id="id" type="checkbox" v-model="task.isDone" />
     <label :for="id">{{task.content}}</label>
     <transition name="delete_fade">
-      <span class="task_delete" v-show="task.isDone" @click="deleteClick">
+      <span class="task_delete" v-show="task.isDone" @click="deleteClick(task)">
         <i class="fa fa-trash"></i>
       </span>
     </transition>
@@ -14,6 +12,7 @@
 
 <script>
 let GID = 0;
+import { mapMutations } from "vuex";
 export default {
   props: {
     task: {
@@ -27,8 +26,10 @@ export default {
     };
   },
   methods: {
-    deleteClick() {
-      console.log("删除");
+    ...mapMutations(["deleteTask"]),
+    deleteClick(task) {
+      console.log("删除", task);
+      this.deleteTask(task);
     }
   }
 };
@@ -45,6 +46,9 @@ export default {
 }
 .task input {
   display: none;
+}
+.task label {
+  flex: 1;
 }
 .task label::before,
 .task label::after {

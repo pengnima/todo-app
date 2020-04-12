@@ -6,9 +6,9 @@
     <div class="content">
       <h2>你好，{{todos[0].tasks[0].content}}</h2>
       <p>今天天气不错</p>
-      <p>您有 xx 个任务需要完成</p>
+      <p>您有 {{totalTask}} 个任务需要完成</p>
     </div>
-    <div class="date">日期：{{Date.now()}}</div>
+    <div class="date">日期：{{new Date()|dateFormat}}</div>
   </div>
 </template>
 
@@ -16,7 +16,23 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["todos"])
+    ...mapState(["todos"]),
+    totalTask() {
+      let totalCount = this.todos.reduce((total, todo) => {
+        return (
+          total +
+          todo.tasks.filter(task => {
+            return !task.isDone && !task.deleted;
+          }).length
+        );
+      }, 0);
+      return totalCount;
+    }
+  },
+  filters: {
+    dateFormat(date) {
+      return date.toLocaleDateString();
+    }
   }
 };
 </script>

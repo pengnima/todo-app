@@ -22,6 +22,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
   user-select: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 body {
   background-color: #aaa;

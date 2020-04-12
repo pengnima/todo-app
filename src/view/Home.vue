@@ -17,9 +17,9 @@
       </div>
       <!--  -->
     </div>
-    <div class="home_detail">
-      <todo-detail :isShow="isShow"></todo-detail>
-    </div>
+    <todo-detail :isShow="isShow" />
+    <todo-editing />
+    <floating-button />
   </div>
 </template>
 
@@ -28,14 +28,17 @@ import NavBar from "../components/NavBar";
 import Avatar from "../components/home/Avatar";
 import TodoList from "../components/todo/TodoList";
 import TodoDetail from "../components/todo/TodoDetail";
-
+import TodoEditing from "../components/todo/TodoEditing";
+import FloatingButton from "../components/FloatingButton";
 import { mapState, mapMutations } from "vuex";
 export default {
   components: {
     NavBar,
     Avatar,
     TodoList,
-    TodoDetail
+    TodoDetail,
+    TodoEditing,
+    FloatingButton
   },
   computed: {
     ...mapState(["todos"])

@@ -5,25 +5,22 @@
       <div class="icon">
         <i :class="['fa',`fa-${todo.icon}`]"></i>
       </div>
-      <p>{{todo.tasks.length}} 条任务</p>
+      <p>{{totalCount}} 条任务</p>
       <h1>{{todo.name}}</h1>
       <div class="progress">
-        <span class="progress_line"></span>
+        <span class="progress_line" :style="{width:`${progress}`}"></span>
       </div>
-      <span style="font-size:13px;">80%</span>
+      <span style="font-size:13px;">{{progress}}</span>
     </div>
     <!-- 今天,明天 的任务-->
     <div class="tasks" v-if="selectedTodo!=null">
       <div class="today">
         <p style="letter-spacing:15px">今天</p>
-
-        <task v-for="item in todo.tasks" :key="item.id" :task="item" />
-        <!-- <task :task="todo.tasks[1]" /> -->
+        <task v-for="item in todayTasks" :key="item.id" :task="item" />
       </div>
       <div class="tomorrow">
         <p style="letter-spacing:15px">明天</p>
-        <!-- <task :task="todo.tasks[2]" />
-        <task :task="todo.tasks[3]" />-->
+        <task v-for="item in tomorrowTasks" :key="item.id" :task="item" />
       </div>
     </div>
   </div>
@@ -32,6 +29,7 @@
 <script>
 import Task from "../task/Task";
 import { mapState } from "vuex";
+import { tomorrow } from "../../common/shared";
 export default {
   props: {
     todo: {
@@ -39,8 +37,37 @@ export default {
       default: null
     }
   },
+  data() {
+    return {
+      tomorrow
+    };
+  },
   computed: {
-    ...mapState(["selectedTodo"])
+    ...mapState(["selectedTodo"]),
+    todayTasks() {
+      return this.todo.tasks.filter(task => {
+        return task.date < tomorrow;
+      });
+    },
+    tomorrowTasks() {
+      return this.todo.tasks.filter(task => {
+        return task.date > tomorrow;
+      });
+    },
+    totalCount() {
+      return this.todo.tasks.filter(task => {
+        return task.deleted == false;
+      }).length;
+    },
+    progress() {
+      let doneCount = this.todo.tasks.filter(task => {
+        return task.isDone == true && task.deleted == false;
+      }).length;
+      if (this.totalCount == 0) {
+        return "0%";
+      }
+      return Math.floor((doneCount / this.totalCount) * 100) + "%";
+    }
   },
   components: {
     Task
@@ -104,10 +131,11 @@ export default {
   display: inline-block;
   position: absolute;
 
-  width: 80%;
   height: 100%;
   border-radius: 4px;
   background-color: rgb(0, 174, 255);
+
+  transition: all 0.5s;
 }
 
 .tasks {

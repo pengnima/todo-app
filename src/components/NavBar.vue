@@ -57,7 +57,7 @@ export default {
   color: white;
 }
 .isblack {
-  color: black;
+  color: #333;
 }
 .left {
   width: 20%;
