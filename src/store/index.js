@@ -66,11 +66,22 @@ const store = new Vuex.Store({
         ]
       }
     ],
-    selectedTodo: null
+    selectedTodo: null,
+    currentIndex: 1
   },
   mutations: {
     changeSelected(state, payload) {
       state.selectedTodo = payload;
+    },
+    prevTodo(state) {
+      if (state.currentIndex > 0) {
+        state.currentIndex--;
+      }
+    },
+    nextTodo(state) {
+      if (state.currentIndex < 2) {
+        state.currentIndex++;
+      }
     }
   }
 });

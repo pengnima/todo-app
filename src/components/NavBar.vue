@@ -1,6 +1,6 @@
 <template>
   <div :class="{navbar:true ,isblack:isBlack}">
-    <div class="left">
+    <div class="left" @click="leftClick">
       <i :class="['fa',`fa-${left_icon}`]"></i>
     </div>
     <div class="center">
@@ -34,6 +34,11 @@ export default {
   },
   data() {
     return {};
+  },
+  methods: {
+    leftClick() {
+      this.$emit("leftClick");
+    }
   }
 };
 </script>
