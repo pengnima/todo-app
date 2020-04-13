@@ -18,6 +18,8 @@ export default {
     buttonClick() {
       if (!this.isEditing) {
         this.changeEdit(true);
+      } else {
+        this.$emit("editClick");
       }
     }
   }

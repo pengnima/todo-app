@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .dropdown {
+        display: block;
+        width: 80px;
+        margin-right: 30px;
+      }
+      .select {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+
+        background-color: whitesmoke;
+        color: black;
+        cursor: pointer;
+        user-select: none;
+        outline: none;
+        border: none;
+
+        font-size: 20px;
+      }
+
+      .options {
+        /* display: flex;
+        flex-direction: column; */
+        width: 100%;
+        background-color: white;
+
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      .options a {
+        display: inline-block;
+        width: 100%;
+        height: 40px;
+        color: black;
+        text-decoration: none;
+
+        text-align: center;
+        line-height: 40px;
+      }
+      .options a:hover {
+        background-color: #ddd;
+      }
+      .dropdown:hover .select {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+      }
+
+      .mask {
+        overflow: hidden;
+        width: 100%;
+        height: 0px;
+
+        transition: height 0.5s;
+      }
+      .dropdown:hover .options .mask {
+        height: 120px;
+      }
+
+      .dropdown:hover .select::-webkit-input-placeholder {
+        color: white;
+      }
+      .select::-webkit-input-placeholder {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div" style="display: flex;">
+      <!-- 下拉菜单 -->
+      <div class="dropdown">
+        <input
+          class="select"
+          type="text"
+          placeholder="请选择"
+          disabled
+          value=""
+        />
+        <div class="options">
+          <div class="mask">
+            <a href="javascript:;">彭尼玛</a>
+            <a href="javascript:;">牛尼玛</a>
+            <a href="javascript:;">月尼玛</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let options = document.querySelector(".options");
+      let sel = document.querySelector(".select");
+
+      options.onclick = function(e) {
+        sel.setAttribute("value", e.target.innerText);
+      };
+    </script>
+  </body>
+</html>

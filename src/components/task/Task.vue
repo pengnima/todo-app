@@ -28,7 +28,6 @@ export default {
   methods: {
     ...mapMutations(["deleteTask"]),
     deleteClick(task) {
-      console.log("删除", task);
       this.deleteTask(task);
     }
   }

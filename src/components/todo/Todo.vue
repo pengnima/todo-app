@@ -1,5 +1,5 @@
 <template>
-  <div :class="{todo__no__selected:selectedTodo==null}">
+  <div class="todo" :class="{todo__no__selected:selectedTodo==null}">
     <!-- 简介 -->
     <div class="profile">
       <div class="icon">
@@ -76,6 +76,12 @@ export default {
 </script>
 
 <style scoped>
+.todo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 /* 未选择某一个todo */
 .todo__no__selected .profile {
   padding: 5%;
@@ -142,8 +148,7 @@ export default {
   flex: 1;
   padding: 0 10% 10% 10%;
   color: #666;
-
-  overflow: auto;
+  overflow-y: auto;
 }
 .tasks > div {
   margin-bottom: 32px;

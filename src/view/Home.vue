@@ -18,8 +18,8 @@
       <!--  -->
     </div>
     <todo-detail :isShow="isShow" />
-    <todo-editing />
-    <floating-button />
+    <todo-editing ref="todo_edit" />
+    <floating-button @editClick="editClick" />
   </div>
 </template>
 
@@ -52,6 +52,9 @@ export default {
     ...mapMutations(["changeSelected", "prevTodo", "nextTodo"]),
     showChange() {
       this.isShow = !this.isShow;
+    },
+    editClick() {
+      this.$refs.todo_edit.addTask();
     }
   }
 };

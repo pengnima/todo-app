@@ -68,7 +68,8 @@ const store = new Vuex.Store({
     ],
     selectedTodo: null,
     currentIndex: 1,
-    isEditing: false
+    isEditing: false,
+    gid: 7
   },
   mutations: {
     changeSelected(state, payload) {
@@ -79,6 +80,17 @@ const store = new Vuex.Store({
     },
     deleteTask(state, payload) {
       payload.deleted = true;
+    },
+    increaseTask(state, payload) {
+      let task = {
+        id: state.gid++,
+        content: payload.content,
+        date:
+          payload.date == "明天" ? new Date(Date.now() + 86400000) : new Date(),
+        isDone: false,
+        deleted: false
+      };
+      state.selectedTodo.tasks.push(task);
     },
     prevTodo(state) {
       if (state.currentIndex > 0) {

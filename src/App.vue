@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style>
-@import url("https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css");
+@import url("https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css");
 * {
   margin: 0;
   padding: 0;
