@@ -1,16 +1,18 @@
 <template>
   <div id="app">
+    <gradient-color />
     <home />
   </div>
 </template>
 
 <script>
 import Home from "./view/Home.vue";
-
+import GradientColor from "./view/GradientColor";
 export default {
   name: "App",
   components: {
-    Home
+    Home,
+    GradientColor
   }
 };
 </script>
@@ -28,9 +30,9 @@ body {
   background-color: #aaa;
 }
 #app {
+  position: relative;
   max-width: 375px;
   max-height: 667px;
-  /* background-color: red; */
 
   width: 100vw;
   height: 100vh;

@@ -1,13 +1,7 @@
 <template>
   <transition name="edit_up">
     <div class="todo_editing" v-if="isEditing">
-      <nav-bar
-        title="新建任务"
-        left_icon="times"
-        right_icon="ellipsis-v"
-        :isBlack="true"
-        @leftClick="timesClick"
-      />
+      <nav-bar title="新建任务" left_icon="times" :isBlack="true" @leftClick="timesClick" />
       <div class="edit_content">
         <div class="content_tips">
           <p>简单输入您的计划？(16字内)</p>

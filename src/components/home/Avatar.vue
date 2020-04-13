@@ -49,6 +49,8 @@ export default {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 .content {
   margin: 20px 0;

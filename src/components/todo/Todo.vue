@@ -3,14 +3,17 @@
     <!-- 简介 -->
     <div class="profile">
       <div class="icon">
-        <i :class="['fa',`fa-${todo.icon}`]"></i>
+        <i :class="['fa',`fa-${todo.icon}`]" :style="{color:`${todo.colors[0]}`}"></i>
       </div>
       <p>{{totalCount}} 条任务</p>
       <h1>{{todo.name}}</h1>
       <div class="progress">
-        <span class="progress_line" :style="{width:`${progress}`}"></span>
+        <span
+          class="progress_line"
+          :style="{width:`${progress}`,backgroundColor:`${todo.colors[0]}`}"
+        ></span>
       </div>
-      <span style="font-size:13px;">{{progress}}</span>
+      <span style="font-size:12px;">{{progress}}</span>
     </div>
     <!-- 今天,明天 的任务-->
     <div class="tasks" v-if="selectedTodo!=null">
@@ -105,7 +108,6 @@ export default {
   justify-content: center;
   align-items: center;
 
-  color: #0066ff;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
@@ -139,7 +141,6 @@ export default {
 
   height: 100%;
   border-radius: 4px;
-  background-color: rgb(0, 174, 255);
 
   transition: all 0.5s;
 }

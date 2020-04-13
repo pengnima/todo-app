@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="home_navbar">
-      <nav-bar right_icon="search" />
+      <nav-bar />
     </div>
     <div class="home_avatar">
       <avatar />
@@ -31,6 +31,7 @@ import TodoDetail from "../components/todo/TodoDetail";
 import TodoEditing from "../components/todo/TodoEditing";
 import FloatingButton from "../components/FloatingButton";
 import { mapState, mapMutations } from "vuex";
+import { type } from "os";
 export default {
   components: {
     NavBar,
@@ -41,7 +42,7 @@ export default {
     FloatingButton
   },
   computed: {
-    ...mapState(["todos"])
+    ...mapState(["todos", "currentIndex"])
   },
   data() {
     return {
@@ -64,12 +65,9 @@ export default {
 .home {
   position: relative;
   height: 100%;
-  background-image: linear-gradient(45deg, #e00000, #ffaf37);
   border-radius: 8px;
-
   display: flex;
   flex-direction: column;
-
   overflow: hidden;
 }
 .home_task {

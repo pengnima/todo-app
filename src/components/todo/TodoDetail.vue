@@ -3,13 +3,7 @@
   <transition name="fade">
     <div class="todo_detail" v-if="isShow">
       <!-- 导航栏 -->
-      <nav-bar
-        @leftClick="cancleClick"
-        left_icon="chevron-left"
-        title=" "
-        right_icon="ellipsis-v"
-        :isBlack="true"
-      />
+      <nav-bar @leftClick="cancleClick" left_icon="chevron-left" title=" " :isBlack="true" />
       <!-- 简介 和 任务 -->
       <todo :todo="selectedTodo" />
     </div>

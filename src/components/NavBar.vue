@@ -21,11 +21,11 @@ export default {
     },
     left_icon: {
       type: String,
-      default: "reorder"
+      default: ""
     },
     right_icon: {
       type: String,
-      default: "remove"
+      default: ""
     },
     isBlack: {
       type: Boolean,

@@ -16,7 +16,8 @@ const store = new Vuex.Store({
             isDone: false,
             deleted: false
           }
-        ]
+        ],
+        colors: ["#ff6262", "#ffa947"]
       },
       {
         icon: "tasks",
@@ -50,7 +51,8 @@ const store = new Vuex.Store({
             isDone: false,
             deleted: false
           }
-        ]
+        ],
+        colors: ["#5b9df9", "#47bfcf"]
       },
       {
         icon: "home",
@@ -63,7 +65,8 @@ const store = new Vuex.Store({
             isDone: false,
             deleted: false
           }
-        ]
+        ],
+        colors: ["#2c7d59", "#3ba776"]
       }
     ],
     selectedTodo: null,
